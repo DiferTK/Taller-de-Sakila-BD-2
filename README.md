@@ -25,6 +25,7 @@ WHERE
     length > (SELECT AVG(length) FROM film);
 
 ##3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
+
 ```sql
 SELECT 
     film.title 
@@ -36,9 +37,7 @@ WHERE
     rental.return_date IS NULL 
     AND inventory.store_id = 1;
 
-
 ##4.De las películas en la tienda con store_id = 1, ¿cuáles fueron alquiladas por un período más largo que el período de alquiler promedio?
-
 
 ```sql
 SELECT 
@@ -77,6 +76,7 @@ HAVING
 
 ##6.¿Qué apellidos no se repiten entre diferentes actores?
 Esta consulta selecciona los apellidos que son únicos entre los diferentes actores en la tabla 'actor'
+
 ```sql
 SELECT 
     last_name
@@ -152,7 +152,6 @@ WHERE
     );
 
 ##10. Seleccionar los 3 principales clientes de cada tienda basándose en el número de alquileres realizados. Utilice las funciones Rank, Dense_Rank y Row_Number, y cree un campo booleano adicional que indique los registros donde estas tres funciones devuelvan el mismo valor (0) y los registros donde estas tres funciones no devuelvan el mismo valor (1).
-
 
 ```sql
 SELECT 
