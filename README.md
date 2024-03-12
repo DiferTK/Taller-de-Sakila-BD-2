@@ -13,7 +13,7 @@ VALUES (1001,'Adventuras del mar', 'Piratas pero de tematica romantica', 2002, 6
 ```
 ![Ejercicio 1](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/296788e7-7dd7-4ef2-baae-a1897136675b)
 
-#2. Películas con duración mayor que el promedio
+##2. Películas con duración mayor que el promedio
 
 Esta consulta selecciona las películas cuya duración es mayor que la duración promedio de todas las películas en la tabla 'film'.
 ```sql
@@ -24,7 +24,7 @@ WHERE length > (SELECT AVG(length) FROM film);
 ```
 ![Ejercicio 2](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/f9bd7c15-1dfe-48ef-9a87-675f36298d20)
 
-#3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
+##3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
 
 ```sql
 SELECT 
@@ -59,10 +59,11 @@ HAVING
         FROM 
             rental
     );
+```
+![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/d5e2f740-c447-4741-917f-de96ca629205)
 
 ##5.Qué actores forman parte del reparto de 5 o menos películas? (Revisar)
 Esta consulta selecciona los actores que han participado en 5 o menos películas
-
 ```sql
 SELECT 
     actor.actor_id,
@@ -75,10 +76,11 @@ GROUP BY
     actor.actor_id
 HAVING 
     movie_count <= 5;
+```
+![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/0794ee93-37af-46e5-9b83-4d896db55f32)
 
 ##6.¿Qué apellidos no se repiten entre diferentes actores?
 Esta consulta selecciona los apellidos que son únicos entre los diferentes actores en la tabla 'actor'
-
 ```sql
 SELECT 
     last_name
@@ -88,9 +90,8 @@ GROUP BY
     last_name
 HAVING 
     COUNT(*) = 1;
-
+```
 ##7.Crear una vista con los 3 géneros que generan mayores ingresos. Enumérelos en orden descendente, considerando el campo 'amount' de la tabla de pagos para el cálculo. 
-
 ```sql
 create VIEW Top3Generos AS
 SELECT 
@@ -110,9 +111,8 @@ ORDER BY
 LIMIT 
     3;
 SELECT * FROM Top3Generos;
-
+```
 ##8.Seleccionar las dos películas más vistas en cada ciudad. Esta consulta selecciona las dos películas más vistas en cada ciudad, mostrando el nombre de la ciudad, el título de la película y el recuento de alquileres. ERROR
-
 ```sql
 SELECT city.city, title, COUNT(rental.rental_id) AS rental_count
 FROM rental
@@ -123,9 +123,8 @@ INNER JOIN city ON address.city_id = city.city_id
 INNER JOIN film ON inventory.film_id = film.film_id
 GROUP BY city.city, title
 ORDER BY city.city, rental_count DESC;
-
+```
 ##9. Seleccionar el nombre, apellido y correo electrónico de todos los clientes de Estados Unidos que no hayan alquilado ninguna película en los últimos tres meses
-
 ```sql
 SELECT 
     c.first_name AS nombre,
@@ -152,6 +151,7 @@ WHERE
         WHERE 
             r.rental_date >= DATE_SUB(NOW(), INTERVAL 3 MONTH)
     );
+```
 
 ##10. Seleccionar los 3 principales clientes de cada tienda basándose en el número de alquileres realizados. Utilice las funciones Rank, Dense_Rank y Row_Number, y cree un campo booleano adicional que indique los registros donde estas tres funciones devuelvan el mismo valor (0) y los registros donde estas tres funciones no devuelvan el mismo valor (1).
 
@@ -182,3 +182,4 @@ FROM (
 ) AS ranked_customers
 WHERE 
     rank_value <= 3;
+```
