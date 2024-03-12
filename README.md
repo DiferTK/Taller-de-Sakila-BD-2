@@ -13,20 +13,18 @@ VALUES (1001,'Adventuras del mar', 'Piratas pero de tematica romantica', 2002, 6
 ```
 ![Ejercicio 1](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/296788e7-7dd7-4ef2-baae-a1897136675b)
 
-##2. Películas con duración mayor que el promedio
+#2. Películas con duración mayor que el promedio
 
 Esta consulta selecciona las películas cuya duración es mayor que la duración promedio de todas las películas en la tabla 'film'.
 ```sql
+USE sakila;
+SELECT title, length
+FROM film
+WHERE length > (SELECT AVG(length) FROM film);
+```
+![Ejercicio 2](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/f9bd7c15-1dfe-48ef-9a87-675f36298d20)
 
-SELECT 
-    title,
-    length
-FROM 
-    film
-WHERE 
-    length > (SELECT AVG(length) FROM film);
-
-##3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
+#3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
 
 ```sql
 SELECT 
@@ -38,6 +36,8 @@ FROM
 WHERE 
     rental.return_date IS NULL 
     AND inventory.store_id = 1;
+```
+![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/723094b8-d127-4128-a95e-cfba7f3bcd80)
 
 ##4.De las películas en la tienda con store_id = 1, ¿cuáles fueron alquiladas por un período más largo que el período de alquiler promedio?
 
