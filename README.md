@@ -1,13 +1,12 @@
 # Taller-de-Sakila-BD-2
 # Registro de Consultas SQL
-
-El desarrollo y la presentación de este taller se realizarán de forma individual, y la fecha de la presentación se comunicará en breve.
+En la presente, se mostraran diez consultas que se realizaron para la Base de Datos Sakila en MySQL
 
 ## 1. Insertar un registro en la tabla 'film'
 
 Se inserta un registro en la tabla 'film' utilizando valores ficticios para asegurar la integridad referencial con otras tablas.
 
-```sql
+```sql```
 INSERT INTO film (title, description, release_year, language_id, original_language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features)
 VALUES ('PRUEBA X', 'Descripcion creativa', 2024, 1, 1, 3, 4.99, 120, 19.99, 'PG', 'Trailers');
 
