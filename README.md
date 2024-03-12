@@ -91,6 +91,9 @@ GROUP BY
 HAVING 
     COUNT(*) = 1;
 ```
+![b8fc4348-8e3f-4132-b096-357b4903d114](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/3baa1e87-f3c7-49c9-9c23-392cfcbcd9c6)
+
+
 ##7.Crear una vista con los 3 géneros que generan mayores ingresos. Enumérelos en orden descendente, considerando el campo 'amount' de la tabla de pagos para el cálculo. 
 ```sql
 create VIEW Top3Generos AS
