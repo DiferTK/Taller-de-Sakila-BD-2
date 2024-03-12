@@ -6,9 +6,12 @@ En la presente, se mostraran diez consultas que se realizaron para la Base de Da
 
 Se inserta un registro en la tabla 'film' utilizando valores ficticios para asegurar la integridad referencial con otras tablas.
 
-```sql```
-INSERT INTO film (title, description, release_year, language_id, original_language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features)
-VALUES ('PRUEBA X', 'Descripcion creativa', 2024, 1, 1, 3, 4.99, 120, 19.99, 'PG', 'Trailers');
+```sql
+SELECT * FROM sakila.film;
+INSERT INTO film (film_id,title, description, release_year, language_id, original_language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, last_update)
+VALUES (1001,'Adventuras del mar', 'Piratas pero de tematica romantica', 2002, 6, NULL, 10, 4.30, 113, 10.79, 'R', 'Trailers,Deleted Scenes,2007-03-14 05:30:42');
+```
+![Ejercicio 1](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/296788e7-7dd7-4ef2-baae-a1897136675b)
 
 ##2. Películas con duración mayor que el promedio
 
