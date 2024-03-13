@@ -4,8 +4,6 @@ En la presente, se mostraran diez consultas que se realizaron para la Base de Da
 
 ## 1. Insertar un registro en la tabla 'film'
 
-Se inserta un registro en la tabla 'film' utilizando valores ficticios para asegurar la integridad referencial con otras tablas.
-
 ```sql
 SELECT * FROM sakila.film;
 INSERT INTO film (film_id,title, description, release_year, language_id, original_language_id, rental_duration, rental_rate, length, replacement_cost, rating, special_features, last_update)
@@ -14,8 +12,6 @@ VALUES (1001,'Adventuras del mar', 'Piratas pero de tematica romantica', 2002, 6
 ![Ejercicio 1](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/296788e7-7dd7-4ef2-baae-a1897136675b)
 
 ## 2. Películas con duración mayor que el promedio
-
-Esta consulta selecciona las películas cuya duración es mayor que la duración promedio de todas las películas en la tabla 'film'.
 ```sql
 USE sakila;
 SELECT title, length
@@ -25,7 +21,6 @@ WHERE length > (SELECT AVG(length) FROM film);
 ![Ejercicio 2](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/f9bd7c15-1dfe-48ef-9a87-675f36298d20)
 
 ## 3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
-
 ```sql
 SELECT 
     film.title 
