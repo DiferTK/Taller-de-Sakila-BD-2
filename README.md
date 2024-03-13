@@ -13,7 +13,7 @@ VALUES (1001,'Adventuras del mar', 'Piratas pero de tematica romantica', 2002, 6
 ```
 ![Ejercicio 1](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/296788e7-7dd7-4ef2-baae-a1897136675b)
 
-##2. Películas con duración mayor que el promedio
+## 2. Películas con duración mayor que el promedio
 
 Esta consulta selecciona las películas cuya duración es mayor que la duración promedio de todas las películas en la tabla 'film'.
 ```sql
@@ -24,7 +24,7 @@ WHERE length > (SELECT AVG(length) FROM film);
 ```
 ![Ejercicio 2](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/f9bd7c15-1dfe-48ef-9a87-675f36298d20)
 
-##3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
+## 3. ¿Qué películas están actualmente alquiladas en la tienda con store_id = 1?
 
 ```sql
 SELECT 
@@ -39,7 +39,7 @@ WHERE
 ```
 ![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/723094b8-d127-4128-a95e-cfba7f3bcd80)
 
-##4.De las películas en la tienda con store_id = 1, ¿cuáles fueron alquiladas por un período más largo que el período de alquiler promedio?
+## 4.De las películas en la tienda con store_id = 1, ¿cuáles fueron alquiladas por un período más largo que el período de alquiler promedio?
 
 ```sql
 SELECT 
@@ -62,8 +62,7 @@ HAVING
 ```
 ![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/d5e2f740-c447-4741-917f-de96ca629205)
 
-##5.Qué actores forman parte del reparto de 5 o menos películas? (Revisar)
-Esta consulta selecciona los actores que han participado en 5 o menos películas
+## 5.Qué actores forman parte del reparto de 5 o menos películas? 
 ```sql
 SELECT 
     actor.actor_id,
@@ -79,8 +78,7 @@ HAVING
 ```
 ![image](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/0794ee93-37af-46e5-9b83-4d896db55f32)
 
-##6.¿Qué apellidos no se repiten entre diferentes actores?
-Esta consulta selecciona los apellidos que son únicos entre los diferentes actores en la tabla 'actor'
+## 6.¿Qué apellidos no se repiten entre diferentes actores?
 ```sql
 SELECT 
     last_name
@@ -93,8 +91,7 @@ HAVING
 ```
 ![b8fc4348-8e3f-4132-b096-357b4903d114](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/3baa1e87-f3c7-49c9-9c23-392cfcbcd9c6)
 
-
-##7.Crear una vista con los 3 géneros que generan mayores ingresos. Enumérelos en orden descendente, considerando el campo 'amount' de la tabla de pagos para el cálculo. 
+## 7.Crear una vista con los 3 géneros que generan mayores ingresos. Enumérelos en orden descendente, considerando el campo 'amount' de la tabla de pagos para el cálculo. 
 ```sql
 create VIEW Top3Generos AS
 SELECT 
@@ -113,9 +110,12 @@ ORDER BY
     total_revenue DESC
 LIMIT 
     3;
-SELECT * FROM Top3Generos;
+select *
+from Top3Generos;
 ```
-##8.Seleccionar las dos películas más vistas en cada ciudad. Esta consulta selecciona las dos películas más vistas en cada ciudad, mostrando el nombre de la ciudad, el título de la película y el recuento de alquileres. ERROR
+![6d76b405-5c91-457f-a7cf-29fd54507190](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/87d2332c-d817-4a22-a915-eec69ae8e137)
+
+## 8.Seleccionar las dos películas más vistas en cada ciudad. Esta consulta selecciona las dos películas más vistas en cada ciudad, mostrando el nombre de la ciudad, el título de la película y el recuento de alquileres.
 ```sql
 SELECT city.city, title, COUNT(rental.rental_id) AS rental_count
 FROM rental
@@ -127,7 +127,9 @@ INNER JOIN film ON inventory.film_id = film.film_id
 GROUP BY city.city, title
 ORDER BY city.city, rental_count DESC;
 ```
-##9. Seleccionar el nombre, apellido y correo electrónico de todos los clientes de Estados Unidos que no hayan alquilado ninguna película en los últimos tres meses
+![b753690c-b576-4f8d-a747-fabca2462c2a](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/bcdc44b4-e11b-459c-8163-7191572fdc1a)
+
+## 9. Seleccionar el nombre, apellido y correo electrónico de todos los clientes de Estados Unidos que no hayan alquilado ninguna película en los últimos tres meses
 ```sql
 SELECT 
     c.first_name AS nombre,
@@ -155,8 +157,10 @@ WHERE
             r.rental_date >= DATE_SUB(NOW(), INTERVAL 3 MONTH)
     );
 ```
+![f0bffab8-e5e4-4156-9dd3-df47c9aa0477](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/c086edd2-fa98-4ba0-bfe0-9e82a41ce8c8)
 
-##10. Seleccionar los 3 principales clientes de cada tienda basándose en el número de alquileres realizados. Utilice las funciones Rank, Dense_Rank y Row_Number, y cree un campo booleano adicional que indique los registros donde estas tres funciones devuelvan el mismo valor (0) y los registros donde estas tres funciones no devuelvan el mismo valor (1).
+
+## 10. Seleccionar los 3 principales clientes de cada tienda basándose en el número de alquileres realizados. Utilice las funciones Rank, Dense_Rank y Row_Number, y cree un campo booleano adicional que indique los registros donde estas tres funciones devuelvan el mismo valor (0) y los registros donde estas tres funciones no devuelvan el mismo valor (1).
 
 ```sql
 SELECT 
@@ -186,3 +190,4 @@ FROM (
 WHERE 
     rank_value <= 3;
 ```
+![203dd88a-8597-4658-b605-fdcb0b145d71](https://github.com/DiferTK/Taller-de-Sakila-BD-2/assets/154281253/aafd697c-60b1-47c5-b7e8-f0efb9ddc8ee)
